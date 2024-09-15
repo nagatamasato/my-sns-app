@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Scroll</title>
+    <title>My SNS App</title>
     <style>
         #post-list {
             max-width: 600px;
@@ -26,16 +26,18 @@
             loading = true;
 
             try {
-                const response = await fetch(`http://localhost/posts.php?page=${page}`);
+                const response = await fetch(`http://localhost/backend_api/posts.php?page=${page}`);
                 const posts = await response.json();
+                console.log(posts);
                 const postList = document.getElementById('post-list');
 
                 posts.forEach(post => {
                     const postElement = document.createElement('div');
                     postElement.classList.add('post');
                     postElement.innerHTML = `
-                        <h3>${post.title}</h3>
+                        <h3>@${post.name}</h3>
                         <p>${post.content}</p>
+                        <p>${post.updated_at}</p>
                     `;
                     postList.appendChild(postElement);
                 });
