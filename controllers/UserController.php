@@ -16,6 +16,13 @@ class UserController {
         return $this->userModel->login($name, $password);
     }
 
+    public function logout() {
+        session_start();
+        session_destroy();
+        header('Location: index.php?action=login');
+        exit();
+    }
+
     public function getUserById($id) {
         return $this->userModel->getUserById($id);
     }

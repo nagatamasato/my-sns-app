@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>ログイン</h1>
-    <form action="index.php?action=login" method="post">
+    <form action="index.php?action=login" method="POST">
         <label for="name">ユーザー名:</label>
         <input type="text" id="name" name="name" required>
         <br>
@@ -15,6 +16,6 @@
         <br>
         <button type="submit">ログイン</button>
     </form>
-    <p>アカウントがありませんか？ <a href="index.php?action=register">登録はこちら</a></p>
+    <p>アカウントがありませんか？ <a href="index.php?action=register">新規登録はこちら</a></p>
 </body>
 </html>

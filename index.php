@@ -26,6 +26,10 @@ switch ($action) {
         }
         break;
 
+    case 'logout':
+        $userController->logout();
+        break;    
+
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];
@@ -40,6 +44,17 @@ switch ($action) {
     case 'posts':
         $posts = $postController->getPosts(0, 10);
         include 'views/posts.php';
+        break;
+
+    case 'createPost':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $content = $_POST['content'];
+            $userId = $_SESSION['user_id'];
+            $postController->createPost($userId, $content);
+            header('Location: index.php?action=posts');
+        } else {
+            include 'views/create_post.php';
+        }
         break;
 
     case 'getPosts':
